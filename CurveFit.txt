@@ -1,0 +1,63 @@
+This zip file contains a Delphi 4 (and 5) version of Allen Miller's Curve 
+Fitting routine (from: the book "Pascal Programs For Scientists And 
+Engineers", typed and submitted to MTPUG in Oct. 1982 by Juergen Loewner,
+and corrected and adaptated for Turbo Pascal by Jeff Weiss.
+
+I have updated these routines to work with  Delphi 4's open array 
+parameters. which allows the routine to be generalised so that it is 
+no longer hard-coded to make a specific order of best fit or work with 
+a specific number of points.
+
+The routine also works with Delphi 5 (and probably 6 and 7), and the 
+testbed program runs under Delphi 5.  Ensure that the unit CurveFit.pas
+is somewhere on the testbed's library path.
+
+Richard Kavanagh (r.kavanagh@daelnet.net) kindly supplied a C++ version
+which is included as the archive PolyFitC++.zip
+
+Tony Foale supplied a version where a certain number of the fit terms can 
+be forced to zero, such as having the data be zero at the origin.  Tony 
+writes:
+
+FWIW one of my applications for this is to fit a curve to measured 
+displacement data from engine camshafts.  Generally cams are designed as a 
+polynominal series but the starting and ending velocities and accelerations 
+are zero.  I.e. the 1st and 2nd derivatives of displacement are zero which 
+translates to the first 3 coeffs needing to be zero also.
+
+See the file in TonyFoale.zip, and take a look at his Web site:
+  http://www.tonyfoale.com
+
+
+RELEASE HISTORY
+
+2003 Mar 05  Kelvin Lee spotted an error when all Y values were the same, 
+             causing a divide by zero when calculating the correlation 
+             coefficient.  Now fixed.
+2003 Jun 12  Added missing PreCH.h include definitions to PolyFitC++.zip
+2010 Jan 21  Note that the code works unchanged on Delphi 5 to Delphi 2009
+             Include special version from Tony Foale
+             Update my Web site address both here and on the Pascal source
+
+
+HINTS
+
+Warren Postma noted: 
+
+  Can anyone suggest to me the proper way to calculate the solution for 
+  fitting a set of (X,Y) pairs that is like the 1st order (linear) 
+  equation y = mx + b, but forced through a certain value of b?
+
+  Okay, it turns out that the Polyfit equation can be used for this, by 
+  putting the data in twice (doubled), the first set of data is normal,
+  the second set, all the X and Y values are multiplied by -1. This
+  creates a "mirror image" of the data, and the curve that is fitted
+  always goes through (0, 0).
+
+Nice one, Warren!
+
+
+David J Taylor, Edinburgh
+2010 Jan 21
+Web site: www.satsignal.eu
+E-mail: davidtaylor@writeme.com
